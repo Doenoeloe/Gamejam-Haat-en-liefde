@@ -1,53 +1,77 @@
-using System.IO;
-using System.Net.Http;
-using System.Threading;
-using System;
 using UnityEngine;
-using Unity.VisualScripting;
+using UnityEngine.Networking;
+using UnityEngine.UI;
+using System.Collections;
+
+// For JSON parsing (only picture field)
+[System.Serializable]
+public class RandomUserResponse
+{
+    public Result[] results;
+}
+
+[System.Serializable]
+public class Result
+{
+    public Picture picture;
+}
+
+[System.Serializable]
+public class Picture
+{
+    public string large;
+}
 
 public class API_testingScript : MonoBehaviour
 {
-    //public Button yourButton;
+    public RawImage targetImage; // Drag a UI RawImage here
 
-    void Start()
+    // Hook this up to a Button OnClick
+    public void LoadRandomImage()
     {
-        //Button btn = yourButton.GetComponent<Button>();
-        //btn.onClick.AddListener(GeneratePicture);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        StartCoroutine(GetRandomImage());
     }
 
-    public void OnClickButton()
+    IEnumerator GetRandomImage()
     {
-        GeneratePicture();
-    }
-
-    void GeneratePicture()
-    {
-        Console.WriteLine("Hello world!");
-
-
-        var max = 1000;
-        var url = "https://www.thispersondoesnotexist.com/image";
-
-
-        using (var client = new HttpClient())
+        // Step 1: Fetch JSON
+        using (UnityWebRequest request = UnityWebRequest.Get("https://randomuser.me/api/"))
         {
-            for (int i = 0; i < max; i++)
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
             {
-                var guid = Guid.NewGuid().ToString();
-                var fileInfo = new FileInfo($"{guid}.jpg");
-                System.Console.WriteLine("downloading: " + guid);
-                //var result = await client.GetAsync(url);
-                //result.EnsureSuccessStatusCode();
-                //var ms = await result.Content.ReadAsStreamAsync();
-                var fs = File.Create(fileInfo.FullName);
-                //ms.Seek(0, SeekOrigin.Begin);
-                //ms.CopyTo(fs);
-                Thread.Sleep(1500);
+                string json = request.downloadHandler.text;
+                RandomUserResponse response = JsonUtility.FromJson<RandomUserResponse>(json);
+
+                if (response.results.Length > 0)
+                {
+                    string imageUrl = response.results[0].picture.large;
+                    StartCoroutine(DownloadImage(imageUrl));
+                }
+            }
+            else
+            {
+                Debug.LogError("Failed to fetch JSON: " + request.error);
+            }
+        }
+    }
+
+    // Step 2: Download image
+    IEnumerator DownloadImage(string url)
+    {
+        using (UnityWebRequest request = UnityWebRequestTexture.GetTexture(url))
+        {
+            yield return request.SendWebRequest();
+
+            if (request.result == UnityWebRequest.Result.Success)
+            {
+                Texture2D texture = DownloadHandlerTexture.GetContent(request);
+                targetImage.texture = texture;
+            }
+            else
+            {
+                Debug.LogError("Failed to fetch image: " + request.error);
             }
         }
     }
