@@ -7,17 +7,22 @@ using Unity.VisualScripting;
 
 public class API_testingScript : MonoBehaviour
 {
-    public Button yourButton;
+    //public Button yourButton;
 
     void Start()
     {
-        Button btn = yourButton.GetComponent<Button>();
-        btn.onClick.AddListener(GeneratePicture);
+        //Button btn = yourButton.GetComponent<Button>();
+        //btn.onClick.AddListener(GeneratePicture);
     }
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void OnClickButton()
+    {
+        GeneratePicture();
     }
 
     void GeneratePicture()
@@ -36,12 +41,12 @@ public class API_testingScript : MonoBehaviour
                 var guid = Guid.NewGuid().ToString();
                 var fileInfo = new FileInfo($"{guid}.jpg");
                 System.Console.WriteLine("downloading: " + guid);
-                var result = await client.GetAsync(url);
-                result.EnsureSuccessStatusCode();
-                var ms = await result.Content.ReadAsStreamAsync();
+                //var result = await client.GetAsync(url);
+                //result.EnsureSuccessStatusCode();
+                //var ms = await result.Content.ReadAsStreamAsync();
                 var fs = File.Create(fileInfo.FullName);
-                ms.Seek(0, SeekOrigin.Begin);
-                ms.CopyTo(fs);
+                //ms.Seek(0, SeekOrigin.Begin);
+                //ms.CopyTo(fs);
                 Thread.Sleep(1500);
             }
         }
