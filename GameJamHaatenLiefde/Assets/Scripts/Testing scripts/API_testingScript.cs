@@ -26,6 +26,10 @@ public class API_testingScript : MonoBehaviour
 {
     public RawImage targetImage; // Drag a UI RawImage here
 
+    private void Start()
+    {
+        StartCoroutine(GetRandomImage());
+    }
     // Hook this up to a Button OnClick
     public void LoadRandomImage()
     {
