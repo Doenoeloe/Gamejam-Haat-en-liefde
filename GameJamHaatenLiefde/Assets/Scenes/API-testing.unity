@@ -1764,6 +1764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayLoop
   paperColor: {fileID: 2100000, guid: e3358c49c931b444696a0d2f1c45c4da, type: 2}
+  points: 0
 --- !u!1 &1446388403
 GameObject:
   m_ObjectHideFlags: 0
