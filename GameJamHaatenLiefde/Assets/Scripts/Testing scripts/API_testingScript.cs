@@ -123,32 +123,32 @@ public class API_testingScript : MonoBehaviour
 
     public void LoadRandomImage()
     {
+        canvasY.enabled = false;
+        canvasRu.enabled = false;
+        canvasRi.enabled = false;
+        canvasS.enabled = false;
+        canvasF.enabled = false;
 
         switch (randomProfile.Naam)
         {
-            case "Yorick (18) – Steenbok – 1.95m":
+            case "Yorick (18) â€“ Steenbok â€“ 1.95m":
                 canvasY.enabled = true;
                 break;
-            case "Ruben (19) – Kreeft – 1.70m":
+            case "Ruben (19) â€“ Kreeft â€“ 1.70m":
                 canvasRu.enabled = true;
                 break;
-            case "Rinze (18) – vissen – 1.90m":
+            case "Rinze (18) â€“ vissen â€“ 1.90m":
                 canvasRi.enabled = true;
                 break;
-            case "Simon (18) – Steenbok – 1.79m":
+            case "Simon (18) â€“ Steenbok â€“ 1.79m":
                 canvasS.enabled = true;
                 break;
-            case "Fatma fatume Mohammed (18) – Stier – 1.62m":
+            case "Fatma fatume Mohammed (18) â€“ Stier â€“ 1.62m":
                 canvasF.enabled = true;
                 break;
             default:
-                canvasY.enabled = false;
-                canvasRu.enabled = false;
-                canvasRi.enabled = false;
-                canvasS.enabled = false;
-                canvasF.enabled = false;
+                // only fetch random API image, DO NOT call ShowRandomProfile() here
                 StartCoroutine(GetRandomImage());
-                ShowRandomProfile();
                 break;
         }
     }

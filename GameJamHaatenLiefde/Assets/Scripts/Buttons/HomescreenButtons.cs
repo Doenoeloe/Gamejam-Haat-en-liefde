@@ -7,7 +7,7 @@ public class HomescreenButtons : MonoBehaviour
 {
     public void OnclickStart()
     {
-        SceneManager.LoadScene("GameScreen");
+        SceneManager.LoadScene("API-testing");
     }
 
     public void OnclickQuit()

@@ -451,6 +451,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameJamTafelMetMonitor
       objectReference: {fileID: 0}
+    - target: {fileID: 4990612352181330636, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.620578
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990612352181330636, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.6317267
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990612352181330636, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.203
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990612352181330636, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.41784608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990612352181330636, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -252.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990612352181330636, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 113.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4990612352181330636, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 60.658997
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861130327238872897, guid: 20efbfb93dfe1f9468459d9ea1cd1e7f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a8dd7a440d7c7c4ea812acb1cf00a1e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
