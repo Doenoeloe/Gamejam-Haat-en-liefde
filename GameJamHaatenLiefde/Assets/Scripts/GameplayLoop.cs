@@ -1,5 +1,6 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayLoop : MonoBehaviour
 {
@@ -35,6 +36,7 @@ public class GameplayLoop : MonoBehaviour
     }
     void ResetPaper()
     {
+        CheckScore();
         api.LoadRandomImage();
         paperColor.color = new Color(0.9450980392156862f, 0.9137254901960784f, 0.8235294117647058f, 1f);
     }
@@ -83,4 +85,19 @@ public class GameplayLoop : MonoBehaviour
 
     }
 
+    void CheckScore()
+    {
+        int numb;
+        numb = random.Next(0, 1);
+
+        if (numb == 1)
+        {
+            SceneManager.LoadScene(sceneName: "menu");
+        }
+        else
+        {
+            SceneManager.LoadScene(sceneName: "menu-day");
+        }
+
+    }
 }
